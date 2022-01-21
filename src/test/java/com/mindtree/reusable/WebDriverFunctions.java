@@ -17,20 +17,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.mindtree.exceptions.WebDriverHelperException;
 import com.mindtree.manager.WebDriverManager;
 
-/**
- * This is a reusable helper class for performing all the driver functionalities
- * 
- * @since 29/12/2021
- */
-public class WebDriverHelper extends WebDriverManager {
 
-	/**
-	 * Sending text to element
-	 * 
-	 * @param element
-	 * @param text
-	 * @throws WebDriverHelperException
-	 */
+
+//This is a reusable helper class for performing all the driver functionalities
+
+
+
+public class WebDriverFunctions extends WebDriverManager {
+
+	
+	//Sending text to element
 	public void sendText(By element, String text) throws WebDriverHelperException {
 		try {
 			driver.findElement(element).sendKeys(text);
@@ -39,13 +35,8 @@ public class WebDriverHelper extends WebDriverManager {
 		}
 	}
 
-	/**
-	 * Getting text from a webelement
-	 * 
-	 * @param element
-	 * @return text
-	 * @throws WebDriverHelperException
-	 */
+	
+	//Getting text from a web-element
 	public String getText(By element) throws WebDriverHelperException {
 		String text = null;
 		try {
@@ -56,12 +47,8 @@ public class WebDriverHelper extends WebDriverManager {
 		return text;
 	}
 
-	/**
-	 * to click on a webelement
-	 * 
-	 * @param element
-	 * @throws WebDriverHelperException
-	 */
+	
+	//to click on a web-element
 	public void clickButton(By element) throws WebDriverHelperException {
 		try {
 			driver.findElement(element).click();
@@ -69,33 +56,24 @@ public class WebDriverHelper extends WebDriverManager {
 			throw new WebDriverHelperException(exception);
 		}
 	}
+	
 
-	/**
-	 * Switch window
-	 * 
-	 * @param index
-	 */
+	
+	//windows handling or windows switching
 	public void switchHandles(int index) {
 		ArrayList<String> handles = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(handles.get(index));
 	}
 
-	/**
-	 * Hover on a webelement
-	 * 
-	 * @param element
-	 */
+	
+	//Hover on a web-element
 	public void hover(By element) {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(driver.findElement(element)).perform();
 	}
 
-	/**
-	 * Wait for page loading
-	 * 
-	 * @param time
-	 * @throws WebDriverHelperException
-	 */
+	
+	//Wait for page loading
 	public void pageLoad(int time) throws WebDriverHelperException {
 		try {
 			driver.manage().timeouts().pageLoadTimeout(time, TimeUnit.SECONDS);
@@ -104,44 +82,28 @@ public class WebDriverHelper extends WebDriverManager {
 		}
 	}
 
-	/**
-	 * clear text of an input field
-	 * 
-	 * @param element
-	 */
+	
+	//clear text of an input field
 	public void clearText(By element) {
 		driver.findElement(element).clear();
 	}
 
-	/**
-	 * Perform click through action class
-	 * 
-	 * @param element
-	 * @throws WebDriverHelperException
-	 */
+	
+	//Perform click through action class
 	public void actionClick(By element) throws WebDriverHelperException {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(driver.findElement(element));
 		actions.click(driver.findElement(element)).build().perform();
 	}
 
-	/**
-	 * Check if webelement is present or not
-	 * 
-	 * @param element
-	 * @return boolean value
-	 */
+	
+	//Check if web-element is present or not
 	public boolean elementDisplayed(By element) {
 		return driver.findElement(element).isDisplayed();
 	}
 
-	/**
-	 * Explicit wait for visibility of webelement
-	 * 
-	 * @param time
-	 * @param element
-	 * @throws WebDriverHelperException
-	 */
+	
+	//Explicit wait for visibility of web-element
 	public void explicitWaitForVisibility(int time, By element) throws WebDriverHelperException {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, time);
@@ -151,42 +113,28 @@ public class WebDriverHelper extends WebDriverManager {
 		}
 	}
 
-	/**
-	 * Explicit wait for invisibility of element
-	 * 
-	 * @param element
-	 * @param time
-	 */
+	
+	//Explicit wait for invisibility of element
 	public void explicitWaitForInvisibility(By element, int time) {
 		WebDriverWait wait = new WebDriverWait(driver, time);
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
 	}
 
-	/**
-	 * Implicit wait
-	 * 
-	 * @param time
-	 */
+	
+	//Implicit wait
 	public void implicitWait(int time) {
 		driver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
 	}
 
-	/**
-	 * To click on enter
-	 * 
-	 * @param element
-	 */
+	
+	//To click on enter
 	public void enterKey(By element) {
 		WebElement we = driver.findElement(element);
 		we.sendKeys(Keys.ENTER);
 	}
 
-	/**
-	 * Make the application wait
-	 * 
-	 * @param time
-	 * @throws WebDriverHelperException
-	 */
+
+	// Make the application wait
 	public void applicationWait(int time) throws WebDriverHelperException {
 		try {
 			Thread.sleep(time);

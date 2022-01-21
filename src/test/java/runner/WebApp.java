@@ -50,6 +50,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 1)
+	//Reading data from excel sheet
 	public static void HomePage() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("HomePage");
@@ -71,6 +72,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 2)
+	//Check sign-up utility
 	public static void SignUp() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("SignUp");//df
@@ -78,6 +80,7 @@ public class WebApp extends BaseTest {
 			loggerUtil = new Logs();
 			log = loggerUtil.createLog("SignUp");
 			pageManager = new PageObjectManager();
+			//spreadsheet data reading
 			String Name = ex.read("Name");
 			String Phone = ex.read("Phone");
 			String Email = ex.read("Email");
@@ -94,6 +97,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 3)
+	//check login functionality
 	public static void HomepageLogin() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("HomepageLogin");//df
@@ -101,6 +105,7 @@ public class WebApp extends BaseTest {
 			loggerUtil = new Logs();
 			log = loggerUtil.createLog("HomepageLogin");
 			pageManager = new PageObjectManager();
+			//spreadsheet data reading
 			String Email = ex.read("Email");
 			String Password = ex.read("Password");
 			homepage.Login(Email, Password);
@@ -115,8 +120,37 @@ public class WebApp extends BaseTest {
 			
 		}
 	}
+	
+	
+	@Test(priority = 11)
+	//check login functionality
+	public static void HomepageLogout() throws IOException, InterruptedException {
+		try {
+			test = extent.createTest("HomepageLogout");//df
+			test.log(Status.PASS, "TestCase Execution Started");//ff
+			loggerUtil = new Logs();
+			log = loggerUtil.createLog("HomepageLogin");
+			pageManager = new PageObjectManager();
+			//spreadsheet data reading
+			String Email = ex.read("Email");
+			String Password = ex.read("Password");
+			homepage.Login(Email, Password);
+			//logout
+			homepage.Logout();
+			test.log(Status.PASS, "Successful");//df
+			screenshotPath = getscreenshotpath("HomepageLogout");//df
+			
+		} catch (Exception e) {
+		
+		screenshotPath = getscreenshotpath("HomepageLogout");//df
+			test.fail("HomepageLogout test failed",MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());//df
+			test.log(Status.FAIL, "UnSuccessful");//df
+			
+		}
+	}
 
 	@Test(priority = 4)
+	//Validating about-us page
 	public static void AboutPage() throws IOException, InterruptedException {
 		try {
 		     
@@ -142,6 +176,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 5)
+	//validating contact us
 	public static void ContactPage() throws IOException, InterruptedException {
 		try {
 			
@@ -169,6 +204,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 6)
+	//functionality of one-way cab booking
 	public static void OnewayPage() throws IOException, InterruptedException {
 		try {
 			
@@ -196,6 +232,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 7)
+	//functionality of local cab booking
 	public static void LocalPage() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("LocalPage");//df
@@ -232,6 +269,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 8)
+	//functionality of out-station cab booking
 	public static void OutstationPage() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("OutstationPage");//df
@@ -267,6 +305,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 9)
+	//Functionality of Airport cab booking
 	public static void AirportPage() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("AirportPage");//df
@@ -306,6 +345,7 @@ public class WebApp extends BaseTest {
 	}
 
 	@Test(priority = 10)
+	//functionality of corporate page
 	public static void CorporatePage() throws IOException, InterruptedException {
 		try {
 			test = extent.createTest("CorporatePage");//df

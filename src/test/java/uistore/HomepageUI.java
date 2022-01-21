@@ -11,5 +11,7 @@ public class HomepageUI {
 	public static By email = By.xpath(".//*[@formcontrolname='userEmail']");
 	public static By pass = By.xpath(".//*[@formcontrolname='userPassword']");
 	public static By repass = By.xpath(".//*[@formcontrolname='retypePassword']");
-	public static By submit = By.xpath(".//*[@class='hori-vertical-center']");		
+	public static By submit = By.xpath(".//*[@class='hori-vertical-center']");	
+	//logout
+	public static By logout = By.xpath("//*[@id=\"approot\"]/mat-sidenav-container/mat-sidenav/div/app-menu/div/ul/li[3]");
 }

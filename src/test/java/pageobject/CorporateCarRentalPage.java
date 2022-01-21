@@ -5,18 +5,18 @@ import org.apache.log4j.Logger;
 import com.aventstack.extentreports.Status;
 import com.mindtree.exceptions.WebDriverHelperException;
 import com.mindtree.reusable.BaseTest;
-import com.mindtree.reusable.WebDriverHelper;
+import com.mindtree.reusable.WebDriverFunctions;
 
 import uistore.CorporateCarRentalPageUI;
 import utility.Logs;
 
 public class CorporateCarRentalPage  extends BaseTest {
-	WebDriverHelper helper;
+	WebDriverFunctions helper;
 	Logs loggerUtil;
 	Logger log;
 
 	public CorporateCarRentalPage(){
-		helper = new WebDriverHelper();
+		helper = new WebDriverFunctions();
 		loggerUtil = new Logs();
 	}
 

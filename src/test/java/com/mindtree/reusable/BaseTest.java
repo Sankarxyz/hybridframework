@@ -15,7 +15,7 @@ import utility.Logs;
 
 public class BaseTest extends WebDriverManager {
 	 WebDriverManager driverManager;
-	WebDriverHelper Helper;
+	 WebDriverFunctions Helper;
 	static Logs loggerUtil;
 	static Logger log;
 	public static ExtentTest test;

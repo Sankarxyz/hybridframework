@@ -6,18 +6,18 @@ import org.testng.Assert;
 import com.aventstack.extentreports.Status;
 import com.mindtree.exceptions.WebDriverHelperException;
 import com.mindtree.reusable.BaseTest;
-import com.mindtree.reusable.WebDriverHelper;
+import com.mindtree.reusable.WebDriverFunctions;
 
 import uistore.HomepageUI;
 import utility.Logs;
 
 public class Homepage extends BaseTest {
-	WebDriverHelper helper;
+	WebDriverFunctions helper;
 	Logs loggerUtil;
 	Logger log;
 
 	public Homepage() {
-		helper = new WebDriverHelper();
+		helper = new WebDriverFunctions();
 		loggerUtil = new Logs();
 	}
 
@@ -69,6 +69,20 @@ public class Homepage extends BaseTest {
 			log.info("User Failed to Loggged in");
 			test.log(Status.FAIL, "User Failed to Loggged in");
 
+		}
+	}
+	
+	public void Logout()
+	{
+		try {
+			helper.clickButton(HomepageUI.logout);
+			log.info("user successfully logout");
+			test.log(Status.PASS, "User successfully logged out");
+		} catch (WebDriverHelperException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			log.info("User Failed to Loggged out");
+			test.log(Status.FAIL, "User Failed to Loggged out");
 		}
 	}
 }
